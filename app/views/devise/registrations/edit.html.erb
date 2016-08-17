@@ -1,0 +1,78 @@
+
+<div class="col-md-8 col-md-offset-2">
+<h2>Update your information</h2>
+
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :name %><br />
+          <%= f.text_field :name, class:"form-control", placeholder:"e.g. Anthony Wilbon" %>
+      </div>  
+      <div class="form-group">
+        <%= f.label :title %><br />
+          <%= f.text_field :title, class:"form-control", placeholder:"e.g. Ph.D. (leave blank for none)"  %>
+      </div>    
+      <div class="form-group">
+        <%= f.label :role %><br />
+        <%= f.text_field :role, class:"form-control", placeholder:"e.g. Associate Professor" %>
+      </div>    
+      <div class="form-group">
+          <%= f.label :department %><br />
+        <select class="form-control" id="user_department" name="user[department]">
+          <option value="">Select your department</option>
+          <option value="Accounting">Accounting</option>
+          <option value="Finance & International Business">Finance & International Business</option>
+          <option value="Information Systems & Supply Chain Management">Information Systems & Supply Chain Management</option>
+          <option value="Management">Management</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+      </div>   
+        <div class="form-group">
+            <%= f.label 'Phone number' %><br />
+            <%= f.text_field :phone, placeholder:"e.g. (555)555-5555r", class:"form-control" %>
+      </div>  
+        <div class="form-group">
+            <%= f.label 'Office Hours' %><br />
+            <%= f.text_field :office_hours, placeholder:"Mondays, Wednesdays 11am-12pm", class:"form-control" %>
+      </div>    
+       <div class="form-group">
+            <%= f.label 'Biography' %><br />
+           <%= f.text_area :bio, placeholder:"A short bio of yourself", class:"form-control" %>
+      </div>    
+    
+    
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class:"form-control", autofocus: true %>
+      </div>
+
+      <div class="form-group well">
+        <%= f.label :password %><br />
+        <%= f.password_field :password,class:"form-control",placeholder:"leave blank if you don't want to change it", autocomplete: "off" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+        <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, placeholder:"leave blank if you don't want to change it", class:"form-control", autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password %><br />
+          <%= f.password_field :current_password, class:"form-control", placeholder:"we need your current password to confirm your changes", autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+          <%= f.submit "Update your profile!", class:"btn btn-primary " %>
+      </div>
+    <% end %>
+
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger btn-sm" %></p>
+
+    <%= link_to "Back", :back %>
+</div>
+

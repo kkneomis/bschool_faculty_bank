@@ -1,0 +1,26 @@
+<div class="col-md-8 col-md-offset-2">
+
+<h1>Howard University School of Business <small>Faculty Page Bank</small></h1>
+    <br>
+    
+    <h3>Getting Started</h3>
+    <p>This website allows you to create a profile for yourself on the school of business website. To get started, simply create a new account for yourself. <%= link_to "Then edit your profile to reflect the content you would like to have displayed on the site", edit_user_registration_path %> . If you currently have a profile on the site, please go ahead and create a profile for yourself on here anyways. 
+    <br><br>
+       <% if !user_signed_in? %>
+        <%= link_to "Get Started", new_user_session_path , class:"btn btn-warning"%>
+        <% else %>
+          <%= link_to "Get Started", edit_user_registration_path, class:"btn btn-warning"  %>
+        <% end %>
+        
+    </p>
+ 
+    
+    <h3>Updating your page</h3>
+    <p>To update your page on the school of business website, simply make the appropriate changes here. All updates will be rolled our on a biweekly basis. If there is something that needs to be changed urgently (a dire emergency), please contact Dean Wilbon. </p>
+    
+    
+    <h3>Adding areas of expertise, courses, education, and research</h3>
+    <p>When viewing your profile, you can use the forms at the bottom of the page to add areas of expertise, courses, education, and research. Please be sure to follow the respective recommended formats. Limit your entries for areas of expertise to 3. Limit your research publications to the top 10.</p>
+
+    
+</div>

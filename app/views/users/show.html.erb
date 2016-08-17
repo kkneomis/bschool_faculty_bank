@@ -1,0 +1,115 @@
+
+
+<div class="container">
+        <div data-spy="affix" data-offset-top="0" class="pull-left">
+            <div class="btn-group-vertical">
+                <% if @user.id == current_user.id %>
+                  <%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-warning"  %>
+                  <a href="#top" class="btn btn-primary">Back to Top</a>
+                <% end %>
+
+            </div>
+        </div>
+    
+    <div class="col-md-8 col-md-offset-1 id="top">
+        <h1><%= @user.name %> <%= @user.title %></h1>
+        <p><strong>Role: </strong><%= @user.role %></p>
+        <p><strong>Department: </strong><%= @user.department %></p>
+        <p><strong>Email:</strong> <%= @user.email %></p>
+        <p><strong>Phone Number:</strong> <%= @user.phone %></p>
+        <p><strong>Office Hours:</strong> <%= @user.office_hours%></p>
+        <p><strong>Biography:</strong> <%= @user.bio%></p>
+        <p><strong>Areas of expertise:</strong> 
+            <ul class="list-group">
+            <% @user.areas.each do |area| %>
+                <li class="list-group-item"><%= area.name%><%= link_to 'Remove', [@user ,area], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn-danger btn-xs pull-right" %></li>
+            <% end %>
+            </ul>
+        </p>
+        <p><strong>Education:</strong> 
+            <ul class="list-group">
+            <% @user.educations.each do |education| %>
+                <li class="list-group-item"><%= education.name%><%= link_to 'Remove', [@user ,education], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn-danger btn-xs pull-right" %></li>
+            <% end %>
+            </ul>
+        </p>
+        <p><strong>Courses taught:</strong> 
+            <ul class="list-group">
+            <% @user.courses.each do |course| %>
+                <li class="list-group-item"><%= course.name%> <%= link_to 'Remove', [@user ,course], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn-danger btn-xs pull-right" %></li>
+            <% end %>
+            </ul>
+        </p>
+        <p><strong>Research</strong> 
+            <ul class="list-group">
+            <% @user.researches.each do |research| %>
+                <li class="list-group-item"><%= research.name%><%= link_to 'Remove', [@user ,research], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn-danger btn-xs pull-right" %></li>
+            <% end %>
+            </ul>
+        </p>
+
+
+
+<% if @user.id == current_user.id %>
+  
+
+
+                        <div class="well">
+                            <%= form_for ([@user, Area.new]) do |f| %>
+                                  <strong>Add an area of expertise</strong>
+                                    <div class="input-group">
+                                        <%= f.text_field :name, class:"form-control", placeholder:"e.g. Technology strategy and management", required: true %>
+                                        <span class="input-group-btn">
+                                             <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.submit "Submit", class:"btn btn-primary" %>
+                                          </span>
+                                   </div><!--.form-group-->
+                            <% end %>
+                           
+                            <br>
+    
+                            <%= form_for ([@user, Education.new]) do |f| %>
+                                  <strong>Add Education</strong>
+                                    <div class="input-group">
+                                        <%= f.text_field :name, class:"form-control", placeholder:"e.g. MBA, Management Howard University, Washington, DC 1990", required: true %>
+                                        <span class="input-group-btn">
+                                             <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.submit "Submit", class:"btn btn-primary" %>
+                                          </span>
+                                   </div><!--.form-group-->
+                            <% end %>
+                             
+                            <br>
+                            
+                            <%= form_for ([@user, Course.new]) do |f| %>
+                                  <strong>Add Course taught</strong>
+                                    <div class="input-group">
+                                        <%= f.text_field :name, class:"form-control", placeholder:"e.g. Management Information Systems (undergrad)", required: true %>
+                                        <span class="input-group-btn">
+                                             <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.submit "Submit", class:"btn btn-primary" %>
+                                          </span>
+                                   </div><!--.form-group-->
+                            <% end %>
+                             
+                            <br>
+    
+    
+                            <%= form_for ([@user, Research.new]) do |f| %>
+                                  <strong>Add a research citation</strong>
+                                    <div class="input-group">
+                                        <%= f.text_area :name, class:"form-control", placeholder:"e.g. research citation", required: true %>
+                                        <span class="input-group-btn">
+                                             <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.submit "Submit", class:"btn btn-primary" %>
+                                          </span>
+                                   </div><!--.form-group-->
+                            <% end %>
+                    </div>
+<% end %>
+
+    </div>
+</div>
+
+
+
