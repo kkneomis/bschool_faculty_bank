@@ -33,22 +33,22 @@ gem 'devise'
 
 group :production do
 
-gem 'pg'
+    gem 'pg'
 
-gem 'rails_12factor'
+    gem 'rails_12factor'
 
 end
 
 group :development, :test do
 
-gem 'sqlite3'
+    gem 'sqlite3'
 
 end
 
 group :doc do
 
-gem 'sdoc', require: false
+    gem 'sdoc', require: false
 
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
